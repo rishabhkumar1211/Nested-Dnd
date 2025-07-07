@@ -1,38 +1,171 @@
+/* Main app container */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+  background-color: #f9f9f9;
   min-height: 100vh;
+}
+
+/* Page title */
+.App h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 2.2rem;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 1rem;
+}
+
+/* Nested list container */
+.nested-list {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+/* Item styling */
+.item {
+  padding: 1rem;
+  margin: 0.75rem 0;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Item hover effect */
+.item:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Item being dragged */
+.item.dragging {
+  background-color: #f8f9fa;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 1px dashed #4a90e2;
+  opacity: 0.9;
+  transform: scale(1.02);
+  z-index: 999;
+}
+
+/* Item content */
+.item-content {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+/* Add a drag handle icon */
+.item-content::before {
+  content: '≡';
+  margin-right: 8px;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: grab;
+}
+
+/* Children container */
+.children {
+  padding-left: 1.5rem;
+  margin-left: 0.5rem;
+  border-left: 2px solid #f0f0f0;
+  min-height: 10px;
+  transition: all 0.2s ease;
+}
+
+/* Children container when being dragged over */
+.children.dragging-over {
+  background-color: #f0f7ff;
+  border-left: 2px solid #4a90e2;
+  border-radius: 4px;
+}
+
+/* Empty children container */
+.children:empty {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px dashed #e0e0e0;
+  border-radius: 4px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  color: #aaa;
+  font-size: 0.8rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* Empty children container text */
+.children:empty::after {
+  content: 'Drop items here';
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Show text when dragging over empty container */
+.children.dragging-over:empty::after {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .nested-list {
+    padding: 1rem;
   }
+  
+  .item {
+    padding: 0.75rem;
+  }
+  
+  .children {
+    padding-left: 1rem;
+  }
+}
+
+
+/* Instructions text */
+.instructions {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #666;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Drop indicator */
+.drop-indicator {
+  padding: 0.5rem;
+  text-align: center;
+  color: #4a90e2;
+  font-size: 0.9rem;
+  border: 1px dashed #4a90e2;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  background-color: #f0f7ff;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eaeaea;
 }
